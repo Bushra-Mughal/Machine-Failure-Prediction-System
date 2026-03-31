@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AETHER_INTEL | Predictive Machine Health</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "surface-container-high": "#e7e8e9",
+                "on-secondary-container": "#00731d",
+                "tertiary": "#006481",
+                "surface-tint": "#005bc1",
+                "tertiary-fixed": "#bee9ff",
+                "primary": "#0058bc",
+                "error-container": "#ffdad6",
+                "on-surface": "#191c1d",
+                "secondary-container": "#60fe6c",
+                "on-error": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "on-secondary-fixed-variant": "#005313",
+                "primary-fixed": "#d8e2ff",
+                "surface-container-lowest": "#ffffff",
+                "primary-container": "#0070eb",
+                "on-tertiary-fixed": "#001f2a",
+                "inverse-on-surface": "#f0f1f2",
+                "primary-fixed-dim": "#adc6ff",
+                "on-primary": "#ffffff",
+                "error": "#ba1a1a",
+                "tertiary-container": "#007ea2",
+                "inverse-surface": "#2e3132",
+                "surface-variant": "#e1e3e4",
+                "surface-bright": "#f8f9fa",
+                "on-surface-variant": "#414755",
+                "background": "#f8f9fa",
+                "secondary": "#006e1c",
+                "secondary-fixed": "#70ff76",
+                "on-secondary": "#ffffff",
+                "surface-container-highest": "#e1e3e4",
+                "on-tertiary-container": "#fbfdff",
+                "inverse-primary": "#adc6ff",
+                "surface-container-low": "#f3f4f5",
+                "on-secondary-fixed": "#002204",
+                "on-primary-container": "#fefcff",
+                "surface-container": "#edeeef",
+                "outline-variant": "#c1c6d7",
+                "secondary-fixed-dim": "#42e355",
+                "on-background": "#191c1d",
+                "tertiary-fixed-dim": "#68d3ff",
+                "surface": "#f8f9fa",
+                "outline": "#717786",
+                "on-tertiary-fixed-variant": "#004d64",
+                "surface-dim": "#d9dadb",
+                "on-error-container": "#93000a",
+                "on-primary-fixed-variant": "#004493",
+                "on-primary-fixed": "#001a41"
+              },
+              fontFamily: {
+                "headline": ["Space Grotesk"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .ghost-border {
+            outline: 1px solid rgba(113, 119, 134, 0.15);
+        }
+        .whisper-shadow {
+            box-shadow: 0 20px 40px rgba(25, 28, 29, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<div class="flex min-h-screen">
+<!-- SideNavBar (Updated Shared Component) -->
+<aside class="hidden lg:flex flex-col h-screen w-64 left-0 top-0 fixed bg-slate-50 dark:bg-slate-900 border-r-0 py-8 px-4 font-['Space_Grotesk'] antialiased tracking-tight z-40">
+<div class="mb-10 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20 p-0.5">
+<img alt="Alex Rivera" class="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA55mU4UQIbXIOTLt_lPPBvoTVM4g0bYBHtIxsI4dRs6yN47cuvcQQw_3fFkSJoxH9KXYTPZV-bpd0SndrXIvP36bHff2qCEHFoQ-2zRXdz0S0rOu58EaKEhh6sJ-nYjzPW3ZYaGS8lTDq5HZdud8iaHOZ2STjA_zsiP6tb9UDbJbJoYW9-Gz5h6BbZbxVCeqMupiXANvvh9MmxD7VKKRKBghht_W2RNMhSCjhO4l52ldAvvFK7YAqRgC1q12Q32BoIigKL4Fpg4yo"/>
+</div>
+<div>
+<h2 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Alex Rivera</h2>
+<span class="text-xs text-slate-500 font-medium">Senior Lead</span>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-blue-700 dark:text-blue-400 font-bold border-r-2 border-blue-700 dark:border-blue-400 bg-white/50 dark:bg-white/5 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span>Sensors</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined">notifications_active</span>
+<span>Alerts</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined">model_training</span>
+<span>Models</span>
+</a>
+</nav>
+<div class="mt-auto space-y-1 pt-8 border-t border-slate-100 dark:border-slate-800">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 lg:ml-64 p-6 lg:p-10 space-y-8">
+<!-- Hero Section: Predictive Health Index -->
+<section class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<div class="xl:col-span-8 space-y-8">
+<header class="flex justify-between items-end">
+<div>
+<span class="text-primary font-headline font-bold text-sm tracking-widest uppercase">System Intelligence</span>
+<h1 class="text-4xl lg:text-5xl font-headline font-bold text-on-surface tracking-tight mt-2">Predictive Health Index</h1>
+</div>
+<div class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-container/20 text-on-secondary-container ghost-border">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(0,110,28,0.4)]"></span>
+<span class="text-xs font-bold font-label tracking-wider uppercase">Operational</span>
+</div>
+</header>
+<div class="glass-panel rounded-3xl p-10 whisper-shadow ghost-border relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-center gap-12">
+<!-- Minimalist Ring Gauge -->
+<div class="relative w-64 h-64 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-container-high" cx="128" cy="128" fill="transparent" r="110" stroke="currentColor" stroke-width="12"></circle>
+<circle cx="128" cy="128" fill="transparent" r="110" stroke="url(#gradient-primary)" stroke-dasharray="691" stroke-dashoffset="124" stroke-linecap="round" stroke-width="12"></circle>
+<defs>
+<lineargradient id="gradient-primary" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" style="stop-color:#0058bc"></stop>
+<stop offset="100%" style="stop-color:#0070eb"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline text-6xl font-bold text-on-surface">82<span class="text-2xl font-normal text-outline">%</span></span>
+<span class="text-xs font-label text-outline uppercase tracking-widest mt-1">Health Score</span>
+</div>
+</div>
+<div class="flex-1 space-y-6 w-full">
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 rounded-2xl bg-surface-container-low">
+<span class="text-xs font-label text-outline uppercase block mb-1">Failure Probability</span>
+<div class="flex items-end gap-2">
+<span class="font-headline text-3xl font-bold text-error">12.4%</span>
+<span class="text-xs text-error font-medium mb-1 flex items-center">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                                            0.2%
+                                        </span>
+</div>
+</div>
+<div class="p-4 rounded-2xl bg-surface-container-low border-l-4 border-primary">
+<span class="text-xs font-label text-outline uppercase block mb-1">Status Recommendation</span>
+<span class="text-lg font-bold text-primary leading-tight">MAINTENANCE NEEDED</span>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-label text-outline uppercase tracking-wider">
+<span>Confidence Interval</span>
+<span>98.2% Accurate</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[98.2%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Estimated RUL Card -->
+<div class="xl:col-span-4 h-full">
+<div class="bg-primary p-8 rounded-3xl h-full flex flex-col justify-between text-white whisper-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-9xl">hourglass_empty</span>
+</div>
+<div class="relative z-10">
+<span class="text-xs font-label tracking-widest uppercase opacity-80">Remaining Useful Life</span>
+<h3 class="text-5xl font-headline font-bold mt-4">1,248 <span class="text-xl font-normal opacity-60">HRS</span></h3>
+<p class="text-sm opacity-70 mt-4 leading-relaxed">System model A-24 expects component fatigue threshold to be reached in 52 days under current load.</p>
+</div>
+<div class="relative z-10 pt-8 mt-auto">
+<button class="w-full py-4 bg-white text-primary rounded-xl font-bold tracking-tight hover:bg-surface-container-lowest transition-all duration-300 active:scale-95">
+                            SCHEDULE INSPECTION
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Machine Health Metrics: Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Lubrication Quality -->
+<div class="surface-container-lowest glass-panel p-6 rounded-2xl whisper-shadow ghost-border border-l-4 border-secondary">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary/10 text-secondary rounded-lg">
+<span class="material-symbols-outlined">oil_barrel</span>
+</div>
+<span class="text-xs font-medium text-secondary">Optimal</span>
+</div>
+<h4 class="text-sm font-label text-outline uppercase tracking-wider">Lubrication Quality</h4>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-headline text-3xl font-bold">94.2</span>
+<span class="text-xs text-outline">Viscosity Index</span>
+</div>
+<div class="mt-4 h-8 flex items-end gap-1">
+<div class="flex-1 bg-surface-container-high rounded-sm h-1/2"></div>
+<div class="flex-1 bg-surface-container-high rounded-sm h-3/4"></div>
+<div class="flex-1 bg-surface-container-high rounded-sm h-2/3"></div>
+<div class="flex-1 bg-secondary rounded-sm h-full"></div>
+<div class="flex-1 bg-secondary rounded-sm h-5/6"></div>
+</div>
+</div>
+<!-- Vibration Variance -->
+<div class="surface-container-lowest glass-panel p-6 rounded-2xl whisper-shadow ghost-border border-l-4 border-primary">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/10 text-primary rounded-lg">
+<span class="material-symbols-outlined">vibration</span>
+</div>
+<span class="text-xs font-medium text-primary">Baseline Shift</span>
+</div>
+<h4 class="text-sm font-label text-outline uppercase tracking-wider">Vibration Variance</h4>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-headline text-3xl font-bold">2.4</span>
+<span class="text-xs text-outline">RMS (mm/s)</span>
+</div>
+<div class="mt-4 h-8 flex items-center overflow-hidden">
+<svg class="w-full h-full" viewbox="0 0 100 20">
+<path d="M0 10 Q 5 2, 10 10 T 20 10 T 30 10 T 40 10 T 50 10 T 60 10 T 70 10 T 80 10 T 90 10 T 100 10" fill="none" stroke="#0058bc" stroke-width="1.5"></path>
+</svg>
+</div>
+</div>
+<!-- Thermal Threshold -->
+<div class="surface-container-lowest glass-panel p-6 rounded-2xl whisper-shadow ghost-border border-l-4 border-secondary">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary/10 text-secondary rounded-lg">
+<span class="material-symbols-outlined">thermostat</span>
+</div>
+<span class="text-xs font-medium text-secondary">Nominal</span>
+</div>
+<h4 class="text-sm font-label text-outline uppercase tracking-wider">Thermal Threshold</h4>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-headline text-3xl font-bold">42.8<span class="text-lg">°C</span></span>
+</div>
+<div class="mt-4 space-y-1">
+<div class="flex justify-between text-[10px] text-outline uppercase">
+<span>Ambient: 22°C</span>
+<span>Limit: 85°C</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full">
+<div class="h-full bg-secondary w-1/2"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Section: Live Log Feed and Details -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Live Log Feed -->
+<div class="lg:col-span-2 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-headline font-bold">Live System Heartbeat</h3>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-secondary flex items-center gap-1">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse"></span>
+                            LIVE STREAMING
+                        </span>
+</div>
+</div>
+<div class="surface-container-low rounded-2xl p-2 ghost-border">
+<div class="bg-surface-container-lowest rounded-xl h-64 overflow-y-auto font-mono text-[11px] p-4 space-y-2">
+<div class="flex gap-4 text-outline border-b border-surface-container py-1">
+<span class="w-24 shrink-0">[14:24:02.01]</span>
+<span class="text-secondary font-bold shrink-0">HEARTBEAT</span>
+<span class="flex-1">Sensor-K4 reporting nominal telemetry. Sync complete.</span>
+</div>
+<div class="flex gap-4 text-outline border-b border-surface-container py-1">
+<span class="w-24 shrink-0">[14:23:58.42]</span>
+<span class="text-primary font-bold shrink-0">MODEL_UPD</span>
+<span class="flex-1">Inference Engine v2.4 re-calibrating thermal bias for Cluster-A.</span>
+</div>
+<div class="flex gap-4 text-outline border-b border-surface-container py-1">
+<span class="w-24 shrink-0">[14:23:45.10]</span>
+<span class="text-secondary font-bold shrink-0">HEARTBEAT</span>
+<span class="flex-1">Pressure differential maintained at 102.4 PSI.</span>
+</div>
+<div class="flex gap-4 text-outline border-b border-surface-container py-1">
+<span class="w-24 shrink-0">[14:22:12.99]</span>
+<span class="text-error font-bold shrink-0">THRESHOLD</span>
+<span class="flex-1">Vibration spike detected on Axis-Z. Normalizing filters...</span>
+</div>
+<div class="flex gap-4 text-outline border-b border-surface-container py-1">
+<span class="w-24 shrink-0">[14:21:05.15]</span>
+<span class="text-secondary font-bold shrink-0">HEARTBEAT</span>
+<span class="flex-1">Deep Learning Node Alpha synchronization verified.</span>
+</div>
+<div class="flex gap-4 text-outline py-1">
+<span class="w-24 shrink-0">[14:20:44.02]</span>
+<span class="text-primary font-bold shrink-0">PREDICT</span>
+<span class="flex-1">Failure probability updated to 12.4% based on 24h trend.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Asset Identification -->
+<div class="space-y-4">
+<h3 class="text-xl font-headline font-bold">Asset Overview</h3>
+<div class="surface-container-lowest rounded-2xl overflow-hidden ghost-border whisper-shadow">
+<div class="h-40 w-full relative">
+<img alt="Machine Asset" class="w-full h-full object-cover" data-alt="high-detail macro photograph of a precision industrial turbine with blue glowing technical elements and polished metallic surfaces" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIMUjNrrLSMox20TWlgN-NIFyYKcUhncC8oneIKZ6M0dScH1eKg_sltd2sjI6m9gOYb92DXs5hDPS-2LS4aMjOUuEizzZ41VRtdVAZSBL95dF9RvbRYrX9OvCO5IsKrwUOv_tSC7seRJqElSGAR6q_1S2c_AiyD3dhqFaWNxaDpWJWs4UMuUb3KkrDA8IbBGFnI347jvFqDGIZvi3N0cFufL_TX5LVxY3yK3RUQEtF2fKby3TAUzHmZog0ziZI-sWu28svzaJLw10"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+</div>
+<div class="p-6 space-y-4">
+<div>
+<h4 class="text-lg font-bold">Turbine Unit Alpha-24</h4>
+<span class="text-xs text-outline">Industrial Zone 4 | Sector 9</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-3 rounded-xl">
+<span class="text-[10px] text-outline uppercase block">Last Service</span>
+<span class="text-sm font-bold">12 OCT 23</span>
+</div>
+<div class="bg-surface-container-low p-3 rounded-xl">
+<span class="text-[10px] text-outline uppercase block">Efficiency</span>
+<span class="text-sm font-bold text-secondary">98.4%</span>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-3 ghost-border text-on-surface text-sm font-bold rounded-xl hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+                            VIEW FULL SCHEMATICS
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>
